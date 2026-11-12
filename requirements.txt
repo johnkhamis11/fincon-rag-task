@@ -1,0 +1,8 @@
+streamlit==1.67.0
+numpy==2.3.5
+scipy==1.17.0
+scikit-learn==1.8.0
+pandas==2.2.3
+rank-bm25==0.2.2
+pypdf==6.10.0
+openai==2.54.0

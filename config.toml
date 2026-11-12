@@ -1,0 +1,15 @@
+[theme]
+base = "dark"
+primaryColor = "rgb(118,226,194)"
+backgroundColor = "rgb(10,17,28)"
+secondaryBackgroundColor = "rgb(16,29,43)"
+textColor = "rgb(228,237,244)"
+linkColor = "rgb(108,168,237)"
+font = "sans serif"
+
+[server]
+headless = true
+maxUploadSize = 10
+
+[browser]
+gatherUsageStats = false
