@@ -1,113 +1,103 @@
-# FinCon RAG Lab — John Khamis
+FinCon RAG Lab — John Khamis
+===========================
 
 **Project owner: [John Khamis](https://github.com/Yassahany2004)**
 
-A Retrieval-Augmented Generation (RAG) application built with Streamlit.
+تطبيق RAG بـStreamlit
 
-**Live application:** Add the URL here after deploying the new repository to Streamlit Community Cloud.
+**رابط التطبيق:** يُضاف بعد نشر المستودع الجديد على Streamlit.
 
-![Application interface showing an answer and its source](reports/preview-app.png)
+تم تفعيل Groq واختبار التوليد الحي مع PRF وHyDE وMulti-query والإجابة بالعربية مع مراجع المصادر. تقرير التوليد في `reports/groq-live-report.json`، وتقرير البحث والمقارنة ورفع الملفات والـBenchmark في `reports/live-deployment-report.json`.
 
-## Project Status
+[انشر هذا المستودع على Streamlit](https://share.streamlit.io/deploy?repository=Yassahany2004/fincon-rag-task&branch=main&mainModule=streamlit_app.py)
 
-Groq has been enabled and live generation has been tested with PRF, HyDE, and Multi-Query. The application can also generate answers in Arabic with source references.
+![واجهة التطبيق مع إجابة ومصدرها](reports/preview-app.png)
 
-- Generation report: `reports/groq-live-report.json`
-- Retrieval, comparison, file-upload, and benchmark report: `reports/live-deployment-report.json`
+ما الذي تم تنفيذه؟
+-----------------
 
-[Deploy this repository to Streamlit](https://share.streamlit.io/deploy?repository=Yassahany2004/fincon-rag-task&branch=main&mainModule=streamlit_app.py)
-
-## Implemented Features
-
-| Stage | Reference approach | Implemented approach |
+| المرحلة | المنهج المرجعي | المنهج المستخدم |
 | --- | --- | --- |
-| Document chunking | Fixed-character Parent/Child chunking | Sentence windows capped at 80 words, or splitting based on lexical cohesion |
-| Query expansion | spaCy and a financial dictionary | Pseudo-Relevance Feedback (PRF), Rocchio, Multi-Query, and HyDE |
-| Query routing | No router was found in the supplied code | Domain-centroid similarity or KNN voting |
-| Retrieval | MiniLM + ChromaDB + BM25 | BM25L + local LSA vector search |
-| Fusion | Reciprocal Rank Fusion (RRF) | Weighted relative scores, with RRF available for comparison |
-| Reranking | BGE Cross-Encoder | Maximal Marginal Relevance (MMR) or relevance ordering |
-| Context | Parent-chunk retrieval | Sentence-extraction compression or neighboring windows |
-| Generation | Groq with source-reference instructions | Groq with reference-ID validation and snippet fallback when validation fails |
-| Evaluation | Original evaluation file | 14 questions with record-level labels and a comparison of four configurations |
+| تقسيم المستندات | Parent/Child بحجم حروف ثابت | Sentence windows بحد 80 كلمة أو فصل حسب التماسك اللفظي |
+| Query expansion | spaCy وقاموس مالي | Pseudo-Relevance Feedback، Rocchio، Multi-query، HyDE |
+| Query routing | لم أجد Router في الكود المرفق | تشابه مع Domain Centroids أو تصويت KNN |
+| Retrieval | MiniLM + ChromaDB + BM25 | BM25L + بحث متجهات LSA محلي |
+| Fusion | RRF | Weighted relative scores مع إتاحة RRF للمقارنة |
+| Reranking | BGE Cross-Encoder | Maximal Marginal Relevance أو Relevance ordering |
+| Context | استرجاع Parent chunks | ضغط باستخراج الجمل أو Neighbor windows |
+| Generation | Groq مع تعليمات مراجع | Groq مع فحص معرفات المراجع والرجوع لمقتطفات عند الفشل |
+| Evaluation | ملف التقييم الأصلي | 14 سؤالًا بعلامات على مستوى السجل، ومقارنة 4 إعدادات |
 
-## Run Locally
-
-**Requirement:** Python 3.12
-
-Create and activate a virtual environment.
+تشغيل محلي — Python 3.12
+-----------------------
 
 ```bash
 python -m venv .venv
 ```
 
-**Windows PowerShell**
+Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-**Linux / macOS**
+Linux / macOS:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Install the dependencies and start the application:
+ثم:
 
 ```bash
 pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-The application does not require FastAPI, Elasticsearch, Docker, a GPU, or downloading models from Hugging Face. Indexing is performed automatically in memory.
+لا يحتاج التطبيق إلى FastAPI أو Elasticsearch أو Docker أو GPU أو تنزيل موديلات من Hugging Face. الفهرسة تتم تلقائيًا في الذاكرة.
 
-## Enable Answer Generation
+تفعيل توليد الإجابات
+-------------------
 
-The application works without an API key and displays original source sentences with references. This is retrieval-and-extraction mode only. To enable generative RAG, configure Groq.
+التطبيق يعمل بدون مفتاح ويعرض جملًا أصلية من المصادر مع مراجع. هذا وضع استرجاع واستخراج فقط؛ لتشغيل الـRAG التوليدي استخدم Groq.
 
-1. Create an API key at [Groq Console](https://console.groq.com/keys).
-2. Enter the key in the **Answer generation** section of the application, or configure it locally as described below.
-3. For Streamlit Community Cloud, add the key through the app's **Secrets** settings.
-
-For local use, copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` and add:
+أنشئ مفتاحًا من https://console.groq.com/keys ثم ضعه في Answer generation داخل الواجهة، أو انسخ ملف `.streamlit/secrets.toml.example` إلى `.streamlit/secrets.toml` محليًا واملأ المفتاح. في Streamlit Cloud ضعه في Secrets فقط.
 
 ```toml
 GROQ_API_KEY = "your-own-key"
 GROQ_MODEL = "openai/gpt-oss-20b"
 ```
 
-The model name can be changed if the list of models available to your Groq account changes. Previous settings for Llama 3.1 8B and Llama 3.3 70B are automatically mapped to GPT-OSS 20B because those models are no longer available to regular accounts. You do not need to change your API key or recreate your secrets.
+اسم الموديل قابل للتغيير إذا تغيرت قائمة الموديلات المتاحة في حسابك. الإعدادات القديمة لـLlama 3.1 8B وLlama 3.3 70B تُحوّل تلقائيًا إلى GPT-OSS 20B بعد إيقاف إتاحتها للحسابات العادية، لذلك لا يلزم تغيير المفتاح أو إعادة إعداد الأسرار. يُستخدم reasoning_effort=low مع حد 4096 توكن لإكمال الإجابة. لا ترفع ملف الأسرار إلى GitHub. الأسئلة والمقاطع المختارة تُرسل إلى Groq عند التفعيل.
 
-Generation uses `reasoning_effort=low` with a 4096-token limit. **Never commit your secrets file to GitHub.** When generation is enabled, the questions and selected passages are sent to Groq.
+النشر على Streamlit Community Cloud
+----------------------------------
 
-## Deploy to Streamlit Community Cloud
+1. افتح https://share.streamlit.io وسجّل بحساب GitHub، وأكمل إنشاء حساب Streamlit.
+2. اربط GitHub وامنح Streamlit وصولًا لهذا الريبو.
+3. اضغط Create app، ثم Yup, I have an app.
+4. اختَر الريبو `Yassahany2004/fincon-rag-task` والفرع `main`.
+5. Main file path: `streamlit_app.py`.
+6. من Advanced settings اختَر Python 3.12 وأضف إعدادات Groq السابقة في Secrets لتفعيل التوليد.
+7. اضغط Deploy. شارك رابط `streamlit.app` الذي يظهر بعد نجاح التشغيل.
 
-1. Visit [Streamlit Community Cloud](https://share.streamlit.io) and sign in with GitHub. Complete Streamlit account setup if prompted.
-2. Connect your GitHub account and grant Streamlit access to this repository.
-3. Click **Create app**, then **Yup, I have an app**.
-4. Select repository `Yassahany2004/fincon-rag-task` and branch `main`.
-5. Set **Main file path** to `streamlit_app.py`.
-6. In **Advanced settings**, select Python 3.12. Add the Groq settings above under **Secrets** to enable answer generation.
-7. Click **Deploy**. Once deployment succeeds, copy the generated `streamlit.app` URL.
+التطبيق جاهز للنشر، لكن وجود الكود على GitHub ليس نشرًا على Streamlit. إنشاء الحساب وربطه والتأكد من ظهور رابط التطبيق خطوات مستقلة.
 
-The application is ready to be deployed, but having the code on GitHub does not mean it has already been deployed to Streamlit. Creating the account, connecting the repository, and obtaining the application URL are separate steps.
+[دليل النشر الرسمي](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
 
-[Official Streamlit deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy)
+كيف تجرّب وتسلم التاسك؟
+-----------------------
 
-## How to Test the Application
+1. جرّب سؤال Form 8-K من الواجهة وافتح Evidence trail.
+2. من Sidebar بدّل PRF إلى Rocchio ثم أعد السؤال وافتح Inspect the pipeline.
+3. جرّب Centroid ثم KNN ولاحظ درجات المجالات. الـRouter يعطي أفضلية بسيطة ولا يحذف المجالات الأخرى.
+4. جرّب Compare methods لنفس السؤال ولاحظ اختلاف المصادر والترتيب.
+5. اضغط Run retrieval benchmark واحفظ التقرير. النتائج الفعلية موجودة أيضًا في `reports/evaluation-report.json`.
+6. فعّل Groq لتجربة التوليد وMulti-query وHyDE. بدون مفتاح يُذكر الرجوع إلى PRF صراحةً.
+7. جرّب رفع مستند نصّي أو PDF واختَر Uploads only للبحث في ملفك فقط.
 
-1. Ask a Form 8-K question in the interface and open **Evidence trail**.
-2. In the sidebar, switch from PRF to Rocchio. Ask the question again and open **Inspect the pipeline**.
-3. Try **Centroid** and then **KNN**. Observe the domain scores. The router applies a slight preference but does not remove the other domains.
-4. Use **Compare methods** with the same question to compare retrieved sources and their ranking.
-5. Click **Run retrieval benchmark** and save the report. The actual results are also available in `reports/evaluation-report.json`.
-6. Enable Groq to test generation, Multi-Query, and HyDE. Without an API key, the application explicitly reports that it is falling back to PRF.
-7. Upload a text document or PDF and select **Uploads only** to search only within your uploaded file.
-
-## Tests and Evaluation
-
-Install the development dependencies, run the tests, and execute the evaluation module:
+الاختبارات والتقييم
+------------------
 
 ```bash
 pip install -r requirements-dev.txt
@@ -115,60 +105,38 @@ python -m pytest -q
 python -m finrag.evaluation
 ```
 
-The tests cover:
+الاختبارات تغطي المصادر الصحيحة، السؤال خارج المجال، عزل مجموعات المستندات، فشل Groq، رفض المراجع غير الموجودة، عدم استخدام HyDE كدليل، وفتح واجهة Streamlit والإجابة والمقارنة. الاختبارات المحلية تستخدم استجابات محاكاة ولا تحتاج مفتاحًا. تم أيضًا اختبار التوليد الحي عبر Groq على النسخة المنشورة، بما يشمل HyDE وMulti-query والإجابة بالعربية.
 
-- Correct source retrieval
-- Questions outside the supported domain
-- Document-group isolation
-- Groq failures
-- Rejection of nonexistent source references
-- Preventing HyDE output from being used as evidence
-- Streamlit interface startup, answering, and comparison
+نجح 38 اختبارًا، بالإضافة إلى اختبار Chromium للبحث والمقارنة والـBenchmark ورفع ملف والبحث فيه وحده وعزل الجلسات والعرض على الموبايل. ملخص المتصفح في `reports/browser-report.json`.
 
-Local tests use mocked responses and do not require an API key. Live Groq generation was also tested on the deployed version, including HyDE, Multi-Query, and Arabic answer generation.
+GitHub Actions يعيد الاختبارات والتقييم على push وpull request. Benchmark الواجهة يعمل على بيانات الديمو دائمًا، لا على ملفاتك.
 
-**Test results:** 38 tests passed. In addition, Chromium tests covered search, comparison, benchmarking, file upload and isolated file search, session isolation, and mobile rendering. The browser summary is available in `reports/browser-report.json`.
+معاني المقاييس وحدودها
+---------------------
 
-GitHub Actions runs the tests and evaluation on every push and pull request. The interface benchmark always uses the demo dataset, not user-uploaded files.
+- Hit@4: ظهور السجل الصحيح ضمن ما يصل إلى 4 مقاطع نهائية.
+- MRR@4: مقلوب ترتيب السجل الصحيح بين السجلات المسترجعة بعد حذف تكرار المعرفات.
+- Evidence-term coverage: نسبة العبارات المحددة في السؤال التجريبي الموجودة في السياق النهائي؛ ليست Context Recall أو Answer Correctness.
+- زمن الاسترجاع لا يشمل الفهرسة أو توليد الإجابة. تشغيله محلي، وليس قياسًا لسرعة Streamlit Cloud.
 
-## Metrics and Limitations
+التقييم صغير وداخل نفس المجال، وليس اختبار تعميم مستقلًا. لا نفترض أن كل تغيير يحسّن النتائج. فحص المراجع يتأكد من وجود معرفات صحيحة وتغطية الفقرات؛ لا يثبت صحة كل معلومة في إجابة النموذج.
 
-- **Hit@4:** Whether the correct record appears among the final retrieved results, up to four passages.
-- **MRR@4:** The reciprocal rank of the correct record among retrieved records, after duplicate IDs are removed.
-- **Evidence-term coverage:** The proportion of specified terms from the test question that appear in the final context. This is not Context Recall or Answer Correctness.
-- **Retrieval time:** Does not include indexing or answer generation. It is measured locally and is not a Streamlit Cloud performance measurement.
+ملاحظات عن الطرق
+----------------
 
-The evaluation dataset is small and domain-specific; it is not an independent generalization test. We do not assume that every change improves retrieval results. Reference validation checks that reference IDs exist and that passages are covered; it does not prove that every statement generated by the model is correct.
+LSA هنا هو TF-IDF ثم Truncated SVD وتطبيع المتجهات والبحث بتشابه جيب التمام. ليس موديل Embeddings عصبيًا مسبق التدريب. التقسيم المسمى `semantic` يعتمد على تشابه TF-IDF لحروف الجمل المجاورة؛ الاسم لا يعني استخدام Neural semantic embeddings.
 
-## Technical Notes
+PRF يضيف 6 مصطلحات من متوسط أفضل 3 نتائج TF-IDF. Rocchio يستخدم `0.8 × query + 0.2 × positive-centroid` في الفضاء الكثيف، دون أمثلة سالبة. الـRouter يطبق boost قدره 1.15 عند وضوح المجال، وإلا يبحث في الجميع. MMR يوازن بين صلة النتيجة بالسؤال وتشابهها مع النتائج المختارة.
 
-- **LSA:** Implemented using TF-IDF, followed by Truncated SVD, vector normalization, and cosine-similarity search. It is not a pretrained neural embedding model.
-- **Semantic chunking:** The implementation uses TF-IDF similarity between adjacent sentences. The name does not mean that neural semantic embeddings are used.
-- **PRF:** Adds six terms based on the average of the top three TF-IDF results.
-- **Rocchio:** Uses `0.8 × query + 0.2 × positive-centroid` in dense-vector space, without negative examples.
-- **Query router:** Applies a boost of `1.15` when the domain is clear; otherwise, it searches all domains.
-- **MMR:** Balances the relevance of a result to the query against its similarity to already selected results.
-- **Arabic support:** Local Arabic query support uses a small financial dictionary, not general-purpose translation. Groq can generate Arabic answers when enabled. Without Groq, retrieved passages remain in the document's original language.
+دعم الأسئلة العربية محليًا عن طريق قاموس مالي صغير، وليس ترجمة عامة. Groq يستطيع توليد الإجابة بالعربية عند تفعيله. بدون Groq تبقى المقتطفات باللغة الأصلية للمستند.
 
-## File Uploads and Limitations
+رفع الملفات وحدوده
+------------------
 
-Supported formats:
+PDF نصّي، TXT، MD، أو JSON يحتوي `content` أو `text` أو `response`. حد الملف 10 MB، وعدد الملفات 20، وPDF حتى 150 صفحة، والمجموعة حتى 1,500,000 حرف. ملفات PDF المصورة تحتاج OCR خارج التطبيق. فهارس المستخدم داخل Session State، وفهرس الديمو فقط مشترك للقراءة. لا يوجد تخزين دائم للملفات؛ إعادة تشغيل السيرفر تفقد الجلسة.
 
-- Text-based PDF
-- TXT
-- Markdown (MD)
-- JSON containing `content`, `text`, or `response`
-
-Upload limits:
-
-- Maximum file size: 10 MB
-- Maximum number of files: 20
-- Maximum PDF length: 150 pages
-- Maximum combined collection size: 1,500,000 characters
-
-Scanned PDFs require OCR outside the application. User-uploaded indexes are stored in Streamlit Session State, while only the demo index is shared read-only. Uploaded files are not stored permanently; restarting the server clears the session.
-
-## Project Structure
+الملفات
+-------
 
 ```text
 streamlit_app.py

@@ -1,4 +1,4 @@
-تنظيم المستودع والنشر — Yassa Hany
+تنظيم المستودع والنشر — John Khamis
 =================================
 
 المستودع: https://github.com/Yassahany2004/fincon-rag-task

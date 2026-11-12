@@ -1,7 +1,7 @@
 Project information
 ===================
 
-Project owner: Yassa Hany
+Project owner: John Khamis
 GitHub: https://github.com/Yassahany2004
 Project: Financial RAG Lab — Task 2
 

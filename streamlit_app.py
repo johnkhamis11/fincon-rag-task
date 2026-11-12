@@ -13,7 +13,7 @@ from finrag.evaluation import evaluate, presets
 from finrag.generation import DEFAULT_MODEL, generate, make_client, resolve_model
 
 
-st.set_page_config(page_title="FinCon | Yassa Hany", page_icon="◈", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="FinCon | John Khamis", page_icon="◈", layout="wide", initial_sidebar_state="expanded")
 st.markdown("""
 <style>
 :root {
@@ -124,7 +124,7 @@ def show_result(result, compact=False):
 with st.sidebar:
     st.subheader("◈ FINCON")
     st.caption("RETRIEVAL RESEARCH LAB · TASK 02")
-    st.caption("Yassa Hany · Project owner")
+    st.caption("John Khamis · Project owner")
     st.divider()
     st.markdown("**Build your pipeline**")
     chunking = st.selectbox("Document chunking", ["sentence_window", "semantic"], format_func=lambda v: {"sentence_window": "Overlapping sentence windows", "semantic": "Lexical cohesion boundaries"}[v])
@@ -179,8 +179,8 @@ except Exception as error:
     st.stop()
 
 st.markdown('<div class="eyebrow">Financial intelligence / source by source</div>', unsafe_allow_html=True)
-st.title("Yassa Hany | Financial RAG Lab")
-st.caption("Project owner: Yassa Hany · [GitHub](https://github.com/Yassahany2004)")
+st.title("John Khamis | Financial RAG Lab")
+st.caption("Project owner: John Khamis · [GitHub](https://github.com/Yassahany2004)")
 st.markdown('<div class="hero"><p>Explore financial documents with a RAG pipeline you can inspect, change and measure.<br>اسأل، غيّر طرق البحث، وشوف الإجابة جاية منين.</p></div>', unsafe_allow_html=True)
 st.markdown('<div class="pipeline">01 &nbsp; CHUNK &nbsp; → &nbsp; 02 &nbsp; EXPAND & ROUTE &nbsp; → &nbsp; 03 &nbsp; RETRIEVE &nbsp; → &nbsp; 04 &nbsp; RERANK &nbsp; → &nbsp; 05 &nbsp; CITE</div>', unsafe_allow_html=True)
 metrics = st.columns(4)
@@ -277,4 +277,4 @@ with about_tab:
     st.write("PRF adds terms from three initial TF-IDF matches. Rocchio moves the query vector toward their centroid. Routing softly boosts a domain rather than discarding other evidence. MMR trades relevance against similarity to already selected chunks. Context compression selects original sentences; it does not generate evidence.")
     st.write("Multi-query and HyDE call Groq when configured. HyDE text is used only for retrieval. It is never passed off as a source. LSA is a corpus-trained linear latent space, not a multilingual pretrained encoder. Arabic support without Groq is a limited finance glossary, not general translation.")
     st.caption("Citation validation checks IDs and paragraph coverage, not whether every generated claim is entailed. No external database, Elasticsearch server, FastAPI service, GPU or model download is required.")
-    st.markdown("**Project owner:** [Yassa Hany](https://github.com/Yassahany2004)")
+    st.markdown("**Project owner:** [John Khamis](https://github.com/Yassahany2004)")
