@@ -1,0 +1,9 @@
+{
+  "question_answer_and_evidence": "passed",
+  "benchmark_and_chart": "passed",
+  "comparison": "passed",
+  "upload_and_uploads_only": "passed",
+  "new_session_isolation_and_arabic_glossary": "passed",
+  "mobile_layout": "passed",
+  "browser_errors": []
+}

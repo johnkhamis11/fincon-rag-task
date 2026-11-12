@@ -1,0 +1,16 @@
+[
+  {"query": "When must a company disclose a material cybersecurity incident using Form 8-K?", "expected_document": "std_sec_cyber_01", "evidence_terms": ["four business days", "materiality"]},
+  {"query": "How are direct emissions different from purchased-electricity and value-chain emissions?", "expected_document": "std_ifrs_s2_ghg_02", "evidence_terms": ["Scope 1", "Scope 2", "Scope 3"]},
+  {"query": "Which employee, revenue and balance sheet criteria appear in the sample CSRD Wave 2 policy?", "expected_document": "std_csrd_esrs_01", "evidence_terms": ["250", "50M", "25M"]},
+  {"query": "What capital output floor limits reductions from internal risk models?", "expected_document": "std_basel_iii_output_floor_02", "evidence_terms": ["72.5%", "standardized"]},
+  {"query": "At which confidence level does FRTB measure Expected Shortfall?", "expected_document": "std_basel_iii_frtb_01", "evidence_terms": ["97.5%", "Expected Shortfall"]},
+  {"query": "What distinguishes WACC from APV when debt changes over a project's life?", "expected_document": "baai_fin_002", "evidence_terms": ["unlevered", "Tax Shields"]},
+  {"query": "What does the cash conversion cycle say about working capital efficiency?", "expected_document": "baai_fin_007", "evidence_terms": ["DIO", "DSO", "DPO"]},
+  {"query": "How does revenue recognition work for multi-element contracts under ASC 606?", "expected_document": "baai_fin_009", "evidence_terms": ["performance obligations", "transaction price"]},
+  {"query": "How do current ratio and quick ratio differ in assessing liquidity?", "expected_document": "baai_fin_021", "evidence_terms": ["inventory", "current liabilities"]},
+  {"query": "How does the interest tax shield affect Modigliani-Miller firm value?", "expected_document": "baai_fin_001", "evidence_terms": ["Tax Shield", "Trade-off Theory"]},
+  {"query": "Which TCFD pillars organize the sample IFRS sustainability disclosures?", "expected_document": "std_ifrs_s1_s2_01", "evidence_terms": ["Governance", "Strategy", "Risk Management", "Metrics and Targets"]},
+  {"query": "What digital reporting format and assurance are described for CSRD statements?", "expected_document": "std_csrd_audit_02", "evidence_terms": ["XHTML", "XBRL", "Limited Assurance"]},
+  {"query": "ايه الفرق بين انبعاثات النطاق 1 و2 و3؟", "expected_document": "std_ifrs_s2_ghg_02", "evidence_terms": ["Scope 1", "Scope 2", "Scope 3"]},
+  {"query": "ايه الحد الادنى لراس المال حسب بازل؟", "expected_document": "std_basel_iii_output_floor_02", "evidence_terms": ["72.5%", "output floor"]}
+]

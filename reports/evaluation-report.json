@@ -1,0 +1,796 @@
+{
+  "description": "Small in-domain, authored smoke benchmark; one labeled document per query. It is not an unbiased estimate of generalization or an LLM faithfulness evaluation.",
+  "summary": [
+    {
+      "pipeline": "BM25L baseline",
+      "queries": 14,
+      "hit_at_4": 1.0,
+      "mrr_at_4": 0.9167,
+      "evidence_term_coverage": 1.0,
+      "mean_retrieval_ms": 6.7
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "queries": 14,
+      "hit_at_4": 0.9286,
+      "mrr_at_4": 0.8929,
+      "evidence_term_coverage": 0.9286,
+      "mean_retrieval_ms": 10.85
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "queries": 14,
+      "hit_at_4": 1.0,
+      "mrr_at_4": 0.9107,
+      "evidence_term_coverage": 1.0,
+      "mean_retrieval_ms": 8.84
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "queries": 14,
+      "hit_at_4": 0.9286,
+      "mrr_at_4": 0.8929,
+      "evidence_term_coverage": 0.9286,
+      "mean_retrieval_ms": 9.74
+    }
+  ],
+  "details": [
+    {
+      "pipeline": "BM25L baseline",
+      "query": "When must a company disclose a material cybersecurity incident using Form 8-K?",
+      "expected_document": "std_sec_cyber_01",
+      "retrieved_documents": [
+        "std_sec_cyber_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 4.36
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "How are direct emissions different from purchased-electricity and value-chain emissions?",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_008",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.48
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "Which employee, revenue and balance sheet criteria appear in the sample CSRD Wave 2 policy?",
+      "expected_document": "std_csrd_esrs_01",
+      "retrieved_documents": [
+        "std_csrd_esrs_01",
+        "baai_fin_009",
+        "std_ifrs_s2_ghg_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 5.08
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "What capital output floor limits reductions from internal risk models?",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "std_basel_iii_output_floor_02",
+        "baai_fin_012",
+        "std_basel_iii_frtb_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 4.59
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "At which confidence level does FRTB measure Expected Shortfall?",
+      "expected_document": "std_basel_iii_frtb_01",
+      "retrieved_documents": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 0.5,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 6.62
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "What distinguishes WACC from APV when debt changes over a project's life?",
+      "expected_document": "baai_fin_002",
+      "retrieved_documents": [
+        "baai_fin_002",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 4.92
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "What does the cash conversion cycle say about working capital efficiency?",
+      "expected_document": "baai_fin_007",
+      "retrieved_documents": [
+        "baai_fin_007",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 28.1
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "How does revenue recognition work for multi-element contracts under ASC 606?",
+      "expected_document": "baai_fin_009",
+      "retrieved_documents": [
+        "baai_fin_009",
+        "baai_fin_007",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 3.47
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "How do current ratio and quick ratio differ in assessing liquidity?",
+      "expected_document": "baai_fin_021",
+      "retrieved_documents": [
+        "baai_fin_021"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 2.88
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "How does the interest tax shield affect Modigliani-Miller firm value?",
+      "expected_document": "baai_fin_001",
+      "retrieved_documents": [
+        "baai_fin_001",
+        "baai_fin_022",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 6.33
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "Which TCFD pillars organize the sample IFRS sustainability disclosures?",
+      "expected_document": "std_ifrs_s1_s2_01",
+      "retrieved_documents": [
+        "std_ifrs_s1_s2_01",
+        "baai_fin_020"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.52
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "What digital reporting format and assurance are described for CSRD statements?",
+      "expected_document": "std_csrd_audit_02",
+      "retrieved_documents": [
+        "std_csrd_audit_02",
+        "std_csrd_esrs_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 4.79
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "ايه الفرق بين انبعاثات النطاق 1 و2 و3؟",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "std_ifrs_s1_s2_01",
+        "std_csrd_audit_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 3.18
+    },
+    {
+      "pipeline": "BM25L baseline",
+      "query": "ايه الحد الادنى لراس المال حسب بازل؟",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "baai_fin_018",
+        "baai_fin_019",
+        "std_basel_iii_output_floor_02",
+        "std_basel_iii_frtb_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 0.3333333333333333,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 3.41
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "When must a company disclose a material cybersecurity incident using Form 8-K?",
+      "expected_document": "std_sec_cyber_01",
+      "retrieved_documents": [
+        "std_sec_cyber_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.18
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "How are direct emissions different from purchased-electricity and value-chain emissions?",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_008",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 17.85
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "Which employee, revenue and balance sheet criteria appear in the sample CSRD Wave 2 policy?",
+      "expected_document": "std_csrd_esrs_01",
+      "retrieved_documents": [
+        "std_csrd_esrs_01",
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_009"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 20.75
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "What capital output floor limits reductions from internal risk models?",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "std_basel_iii_output_floor_02",
+        "baai_fin_012",
+        "std_basel_iii_frtb_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 26.58
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "At which confidence level does FRTB measure Expected Shortfall?",
+      "expected_document": "std_basel_iii_frtb_01",
+      "retrieved_documents": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 0.5,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 6.36
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "What distinguishes WACC from APV when debt changes over a project's life?",
+      "expected_document": "baai_fin_002",
+      "retrieved_documents": [
+        "baai_fin_002",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 6.74
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "What does the cash conversion cycle say about working capital efficiency?",
+      "expected_document": "baai_fin_007",
+      "retrieved_documents": [
+        "baai_fin_007",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.66
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "How does revenue recognition work for multi-element contracts under ASC 606?",
+      "expected_document": "baai_fin_009",
+      "retrieved_documents": [
+        "baai_fin_009",
+        "baai_fin_007",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.47
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "How do current ratio and quick ratio differ in assessing liquidity?",
+      "expected_document": "baai_fin_021",
+      "retrieved_documents": [
+        "baai_fin_021"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 5.64
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "How does the interest tax shield affect Modigliani-Miller firm value?",
+      "expected_document": "baai_fin_001",
+      "retrieved_documents": [
+        "baai_fin_001",
+        "baai_fin_022",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 9.07
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "Which TCFD pillars organize the sample IFRS sustainability disclosures?",
+      "expected_document": "std_ifrs_s1_s2_01",
+      "retrieved_documents": [
+        "std_ifrs_s1_s2_01",
+        "baai_fin_020"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 9.52
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "What digital reporting format and assurance are described for CSRD statements?",
+      "expected_document": "std_csrd_audit_02",
+      "retrieved_documents": [
+        "std_csrd_audit_02",
+        "std_csrd_esrs_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.1
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "ايه الفرق بين انبعاثات النطاق 1 و2 و3؟",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "std_ifrs_s1_s2_01",
+        "std_csrd_audit_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.14
+    },
+    {
+      "pipeline": "PRF + centroid + MMR",
+      "query": "ايه الحد الادنى لراس المال حسب بازل؟",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_018"
+      ],
+      "hit_at_4": 0,
+      "reciprocal_rank": 0,
+      "evidence_term_coverage": 0.0,
+      "latency_ms": 7.89
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "When must a company disclose a material cybersecurity incident using Form 8-K?",
+      "expected_document": "std_sec_cyber_01",
+      "retrieved_documents": [
+        "std_sec_cyber_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.03
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "How are direct emissions different from purchased-electricity and value-chain emissions?",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_008",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.51
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "Which employee, revenue and balance sheet criteria appear in the sample CSRD Wave 2 policy?",
+      "expected_document": "std_csrd_esrs_01",
+      "retrieved_documents": [
+        "std_csrd_esrs_01",
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_009"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 6.9
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "What capital output floor limits reductions from internal risk models?",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "std_basel_iii_output_floor_02",
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_004"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.3
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "At which confidence level does FRTB measure Expected Shortfall?",
+      "expected_document": "std_basel_iii_frtb_01",
+      "retrieved_documents": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 0.5,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 11.52
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "What distinguishes WACC from APV when debt changes over a project's life?",
+      "expected_document": "baai_fin_002",
+      "retrieved_documents": [
+        "baai_fin_002",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 9.01
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "What does the cash conversion cycle say about working capital efficiency?",
+      "expected_document": "baai_fin_007",
+      "retrieved_documents": [
+        "baai_fin_007",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.46
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "How does revenue recognition work for multi-element contracts under ASC 606?",
+      "expected_document": "baai_fin_009",
+      "retrieved_documents": [
+        "baai_fin_009",
+        "baai_fin_007",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 10.49
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "How do current ratio and quick ratio differ in assessing liquidity?",
+      "expected_document": "baai_fin_021",
+      "retrieved_documents": [
+        "baai_fin_021"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.76
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "How does the interest tax shield affect Modigliani-Miller firm value?",
+      "expected_document": "baai_fin_001",
+      "retrieved_documents": [
+        "baai_fin_001",
+        "baai_fin_022",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.76
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "Which TCFD pillars organize the sample IFRS sustainability disclosures?",
+      "expected_document": "std_ifrs_s1_s2_01",
+      "retrieved_documents": [
+        "std_ifrs_s1_s2_01",
+        "baai_fin_020"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 5.63
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "What digital reporting format and assurance are described for CSRD statements?",
+      "expected_document": "std_csrd_audit_02",
+      "retrieved_documents": [
+        "std_csrd_audit_02",
+        "std_csrd_esrs_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 14.46
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "ايه الفرق بين انبعاثات النطاق 1 و2 و3؟",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "std_ifrs_s1_s2_01",
+        "std_csrd_audit_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 9.22
+    },
+    {
+      "pipeline": "Rocchio + KNN + MMR",
+      "query": "ايه الحد الادنى لراس المال حسب بازل؟",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "std_basel_iii_frtb_01",
+        "baai_fin_012",
+        "baai_fin_018",
+        "std_basel_iii_output_floor_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 0.25,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.69
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "When must a company disclose a material cybersecurity incident using Form 8-K?",
+      "expected_document": "std_sec_cyber_01",
+      "retrieved_documents": [
+        "std_sec_cyber_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 5.7
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "How are direct emissions different from purchased-electricity and value-chain emissions?",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_008"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.66
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "Which employee, revenue and balance sheet criteria appear in the sample CSRD Wave 2 policy?",
+      "expected_document": "std_csrd_esrs_01",
+      "retrieved_documents": [
+        "std_csrd_esrs_01",
+        "std_ifrs_s2_ghg_02",
+        "baai_fin_009"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.25
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "What capital output floor limits reductions from internal risk models?",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "std_basel_iii_output_floor_02",
+        "std_basel_iii_frtb_01",
+        "baai_fin_004"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.25
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "At which confidence level does FRTB measure Expected Shortfall?",
+      "expected_document": "std_basel_iii_frtb_01",
+      "retrieved_documents": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 0.5,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 9.26
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "What distinguishes WACC from APV when debt changes over a project's life?",
+      "expected_document": "baai_fin_002",
+      "retrieved_documents": [
+        "baai_fin_002",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 11.29
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "What does the cash conversion cycle say about working capital efficiency?",
+      "expected_document": "baai_fin_007",
+      "retrieved_documents": [
+        "baai_fin_007",
+        "baai_fin_005"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 16.67
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "How does revenue recognition work for multi-element contracts under ASC 606?",
+      "expected_document": "baai_fin_009",
+      "retrieved_documents": [
+        "baai_fin_009",
+        "baai_fin_007",
+        "baai_fin_013"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 18.67
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "How do current ratio and quick ratio differ in assessing liquidity?",
+      "expected_document": "baai_fin_021",
+      "retrieved_documents": [
+        "baai_fin_021",
+        "std_basel_iii_output_floor_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.36
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "How does the interest tax shield affect Modigliani-Miller firm value?",
+      "expected_document": "baai_fin_001",
+      "retrieved_documents": [
+        "baai_fin_001",
+        "baai_fin_022",
+        "baai_fin_007"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.48
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "Which TCFD pillars organize the sample IFRS sustainability disclosures?",
+      "expected_document": "std_ifrs_s1_s2_01",
+      "retrieved_documents": [
+        "std_ifrs_s1_s2_01",
+        "baai_fin_020",
+        "std_csrd_esrs_01",
+        "std_sec_cyber_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 8.9
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "What digital reporting format and assurance are described for CSRD statements?",
+      "expected_document": "std_csrd_audit_02",
+      "retrieved_documents": [
+        "std_csrd_audit_02",
+        "std_csrd_esrs_01"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 9.65
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "ايه الفرق بين انبعاثات النطاق 1 و2 و3؟",
+      "expected_document": "std_ifrs_s2_ghg_02",
+      "retrieved_documents": [
+        "std_ifrs_s2_ghg_02",
+        "std_ifrs_s1_s2_01",
+        "std_csrd_audit_02"
+      ],
+      "hit_at_4": 1,
+      "reciprocal_rank": 1.0,
+      "evidence_term_coverage": 1.0,
+      "latency_ms": 7.88
+    },
+    {
+      "pipeline": "Semantic chunks + PRF",
+      "query": "ايه الحد الادنى لراس المال حسب بازل؟",
+      "expected_document": "std_basel_iii_output_floor_02",
+      "retrieved_documents": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_018"
+      ],
+      "hit_at_4": 0,
+      "reciprocal_rank": 0,
+      "evidence_term_coverage": 0.0,
+      "latency_ms": 8.27
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "url": "https://yassahany2004-fincon-rag-task2-streamlit-app-sopbyb.streamlit.app/",
+  "checked_at_utc": "2026-11-09T22:31:02.019709+00:00",
+  "checks": {
+    "app_load": "passed",
+    "prf": "passed",
+    "hyde": "passed",
+    "multi_query": "passed",
+    "groq_generation": "passed"
+  },
+  "metrics": [
+    "29",
+    "40",
+    "3",
+    "Groq"
+  ],
+  "cases": [
+    {
+      "method": "prf",
+      "answer_mode": "Groq synthesis",
+      "generation_warning": "",
+      "generation_error": null,
+      "generation_diagnostics": {
+        "finish_reason": "stop",
+        "output_characters": 379,
+        "completion_tokens": 95
+      },
+      "rejected_model_output": "",
+      "effective_expansion": "prf",
+      "search_variant_count": 2,
+      "warnings": [],
+      "source_records": [
+        "std_sec_cyber_01"
+      ],
+      "answer_excerpt": "Public companies must disclose a material cybersecurity incident on Form 8‑K within four business days after determining that the incident is material. The determination requires evaluating quantitative impacts such as remediation costs, direct losses, and lost revenue, as well as qualitative factors like reputation damage, litigation risk, and intellectual‑property loss. [S1]"
+    },
+    {
+      "method": "hyde",
+      "answer_mode": "Groq synthesis",
+      "generation_warning": "",
+      "generation_error": null,
+      "generation_diagnostics": {
+        "finish_reason": "stop",
+        "output_characters": 75,
+        "completion_tokens": 50
+      },
+      "rejected_model_output": "",
+      "effective_expansion": "hyde",
+      "search_variant_count": 2,
+      "warnings": [],
+      "source_records": [
+        "baai_fin_012",
+        "std_basel_iii_frtb_01",
+        "baai_fin_012",
+        "baai_fin_007"
+      ],
+      "answer_excerpt": "The FRTB measures Expected Shortfall at a 97.5 % confidence level. [S1][S2]"
+    },
+    {
+      "method": "multi_query",
+      "answer_mode": "Groq synthesis",
+      "generation_warning": "",
+      "generation_error": null,
+      "generation_diagnostics": {
+        "finish_reason": "stop",
+        "output_characters": 411,
+        "completion_tokens": 187
+      },
+      "rejected_model_output": "",
+      "effective_expansion": "multi_query",
+      "search_variant_count": 4,
+      "warnings": [],
+      "source_records": [
+        "std_ifrs_s2_ghg_02",
+        "std_ifrs_s1_s2_01",
+        "std_csrd_audit_02"
+      ],
+      "answer_excerpt": "الفرق بين انبعاثات النطاق 1 و2 و3 هو كما يلي:  \n- النطاق 1 يشمل الانبعاثات المباشرة من الأصول المملوكة أو التي يسيطر عليها الكيان. [S1]  \n- النطاق 2 يشمل الانبعاثات غير المباشرة الناتجة عن استهلاك الكهرباء والبرودة المشتراة. [S1]  \n- النطاق 3 يشمل جميع الانبعاثات في سلسلة القيمة العلوية والسفلية، بما في ذلك الانبعاثات الممولة (الفئة 15) للقطاع المصرفي ومديري الأصول، ويصبح إلزاميًا بعد انتهاء إعفاء 2026. [S1]"
+    }
+  ],
+  "browser_errors": [],
+  "model": "openai/gpt-oss-20b",
+  "source_commit": "1d52ff5254022a96197504c9697f9c075b66aff1",
+  "scope": "Live smoke queries with valid source IDs and paragraph citation checks; this is not a general answer faithfulness evaluation."
+}
